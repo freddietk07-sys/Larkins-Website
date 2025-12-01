@@ -10,10 +10,11 @@
   <style>
     body { margin:0; padding:0; font-family: 'Nunito', sans-serif; background:#f7f3f3; color:#2b1f21; }
     header { text-align:center; padding:60px 20px; background:#4b3234; color:white; border-bottom-left-radius:20px; border-bottom-right-radius:20px; animation: fadeIn 1s ease; }
+
     .logo { max-width:260px; display:block; margin:auto; transition: transform 0.3s ease, filter 0.3s ease; }
-.logo:hover { transform: translateY(-6px); filter: brightness(1.1); }
-.tagline { margin-top:10px; font-size:18px; letter-spacing:1px; font-weight:600; }
-.logo:hover { transform: translateY(-6px); filter: brightness(1.1); }
+    .logo:hover { transform: translateY(-6px); filter: brightness(1.1); }
+
+    .tagline { margin-top:10px; font-size:18px; letter-spacing:1px; font-weight:600; }
 
     .section { background:white; border:2px solid #d2bcbc; margin:25px auto; padding:30px; max-width:1000px; border-radius:16px; animation: fadeIn 1.2s ease; }
     h2 { margin-top:0; font-size:26px; color:#4b3234; border-bottom:3px solid #d2bcbc; padding-bottom:8px; }
@@ -29,14 +30,24 @@
       font-weight:bold;
       border:2px solid #d2bcbc;
       margin-top:15px;
+      border-radius:12px;
     }
-    .btn-directions { background:#2d1f20; }
 
     /* Menu image styling */
-    .menu-img { width:100%; border:2px solid #d2bcbc; border-radius:16px; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+    .menu-img { 
+      width:100%; 
+      border:2px solid #d2bcbc; 
+      border-radius:16px; 
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
+    }
+    .menu-img:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      border-color: #b49a9a;
+    }
 
-    /* Google Map */
-    iframe { width:100%; height:350px; border:2px solid #d2bcbc; }
+    /* Map */
+    iframe { width:100%; height:350px; border:2px solid #d2bcbc; border-radius:16px; }
 
     /* Sticky Call Button */
     .call-sticky {
@@ -54,62 +65,50 @@
     }
     .call-sticky a { color:white; text-decoration:none; }
 
-    /* Responsive */
     @media (max-width:600px) {
       header { padding:25px 10px; }
       .logo { max-width:180px; }
       .section { margin:12px; padding:20px; }
       h2 { font-size:22px; }
     }
-    /* Google Font */
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-  body { font-family: 'Inter', sans-serif; }
 
-  /* Hover animations */
-  .menu-img {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .menu-img:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    border-color: #b49a9a;
-  }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;800&display=swap');
 
-  .btn-download, .btn-directions {
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-  .btn-download:hover, .btn-directions:hover {
-    transform: translateY(-4px);
-    background:#3c2728;
-  }
+    body { font-family: 'Inter', sans-serif; }
 
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;800&display=swap');
-
-  @keyframes fadeIn {
-    from { opacity:0; transform: translateY(10px); }
-    to { opacity:1; transform: translateY(0); }
-  }
-
-</style>
+    @keyframes fadeIn {
+      from { opacity:0; transform: translateY(10px); }
+      to { opacity:1; transform: translateY(0); }
+    }
+  </style>
 </head>
+
 <body>
 
 <header>
-  <img src="data:image/png;base64,{{LOGO_BASE64}}" class="logo" alt="Larkins Logo" />
+  <img src="/larkins-logo.png" class="logo" alt="Larkins Logo" />
   <p class="tagline">Fresh • Local • Hearty</p>
-  
 </header>
 
 <div class="section">
   <h2>Welcome to Larkins Snack Bar</h2>
-  <p>Freshly prepared hot and cold food served daily in Whitstable, crafted with quality ingredients and a commitment to generous, honest portions. We are proud to offer warm, friendly service and a welcoming atmosphere to every customer — from regular locals to first‑time visitors. Whether you’re grabbing breakfast on the go or stopping by for a hearty lunch, we’re here to serve great food at great value.</p>
+  <p>
+    Freshly prepared hot and cold food served daily in Whitstable, crafted with quality ingredients and a commitment to generous, honest portions. 
+    We are proud to offer warm, friendly service and a welcoming atmosphere to every customer — from regular locals to first-time visitors. 
+    Whether you're grabbing breakfast on the go or stopping by for a hearty lunch, we’re here to serve great food at great value.
+  </p>
 </div>
 
 <div class="section">
   <h2>Our Menu</h2>
   <p>Here is our full food menu:</p>
-  <img src="data:image/jpeg;base64,{{MENU_BASE64}}" class="menu-img" alt="Larkins Menu" />
-  <a href="Larkins-Menu-Mobile.pdf" class="btn-download" download>📄 Download Menu (PDF)</a>
+
+  <!-- Menu image now loaded from public folder -->
+  <img src="/MainMenu-tall.jpg" class="menu-img" alt="Larkins Menu" />
+
+  <!-- PDF download from public folder -->
+  <a href="/Larkins-Menu-Mobile.pdf" class="btn-download" download>📄 Download Menu (PDF)</a>
 </div>
 
 <div class="section">
@@ -120,7 +119,9 @@
 <div class="section">
   <h2>Find Us</h2>
   <p><strong>Address:</strong> Reeves Way, Chestfield, Whitstable CT5, UK</p>
+
   <iframe loading="lazy" src="https://www.google.com/maps?q=Larkins+Snack+Bar+Whitstable&output=embed"></iframe>
+
   <a class="btn-directions" href="https://www.google.com/maps/dir/?api=1&destination=Reeves+Way+Chestfield+Whitstable+CT5" target="_blank">🧭 Get Directions</a>
 </div>
 
@@ -130,7 +131,9 @@
   <a href="tel:07902006812" class="btn-download" style="background:white; color:#4b3234; border-color:#4b3234;">📞 07902 006812</a>
 </div>
 
-<div class="call-sticky"><a href="tel:07902006812">📞 Call Now – 07902 006812</a></div>
+<div class="call-sticky">
+  <a href="tel:07902006812">📞 Call Now – 07902 006812</a>
+</div>
 
 </body>
 </html>
